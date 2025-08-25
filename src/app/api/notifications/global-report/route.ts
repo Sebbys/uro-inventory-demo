@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendGlobalLowStockReport } from '@/lib/discord';
 import { db } from '@/db/client';
-import { alertLogs } from '@/db/schema';
-import { eq, and } from 'drizzle-orm';
+import { alertLogs, products } from '@/db/schema';
+import { eq, and, lt } from 'drizzle-orm';
 
 export async function POST(req: NextRequest) {
   try {
@@ -77,15 +77,15 @@ export async function GET() {
   try {
     const lowStockItems = await db
       .select({
-        id: db.products.id,
-        name: db.products.name,
-        sku: db.products.sku,
-        stock: db.products.stock,
-        threshold: db.products.threshold
+        id: products.id,
+        name: products.name,
+        sku: products.sku,
+        stock: products.stock,
+        threshold: products.threshold
       })
-      .from(db.products)
-      .where(db.products.stock < db.products.threshold)
-      .orderBy(db.products.stock);
+      .from(products)
+      .where(lt(products.stock, products.threshold))
+      .orderBy(products.stock);
 
     return NextResponse.json({
       success: true,
