@@ -16,7 +16,7 @@ export default function Home() {
         </Link>
 
         <div className="flex flex-row items-center gap-3">
-          <Switch className="h-[1.15rem] w-8" />
+          {/* <Switch className="h-[1.15rem] w-8" /> */}
           <Link href="/products">
             <Button variant="secondary" className="h-8 px-4 py-2">
               <span>Manage Inventory</span>
