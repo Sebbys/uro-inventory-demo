@@ -1,102 +1,167 @@
-import Image from "next/image";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { Package, ArrowRight, Bell, Database, Zap, Shield } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="new-container relative !border-none sm:!border-dashed">
+      {/* Header */}
+      <header className="flex h-16 items-center justify-between border-b border-dashed px-4">
+        <Link href="/" className="flex flex-row items-center gap-2">
+          <Package className="h-8 w-8 text-primary" />
+          <span className="instrument-serif text-xl font-semibold">Inventory Notifier</span>
+        </Link>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="flex flex-row items-center gap-3">
+          <Switch className="h-[1.15rem] w-8" />
+          <Link href="/products">
+            <Button variant="secondary" className="h-8 px-4 py-2">
+              <span>Manage Inventory</span>
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative flex h-[calc(100svh-64px-200px)] flex-row items-center overflow-hidden border-b border-dashed">
+        {/* Background Image */}
+        <div className="absolute inset-0 h-full w-full overflow-hidden">
+          <div className="h-full w-full bg-gradient-to-br from-background via-muted/20 to-background" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.1)_0%,transparent_70%)]" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="z-10 flex flex-col gap-4">
+          {/* Main Headlines */}
+          <div className="instrument-serif flex flex-col gap-2 px-6 hero-title">
+            <h1 className="dark:text-primary-foreground/30 text-secondary-foreground/50">
+              Smart <span className="dark:text-primary-foreground text-secondary-foreground">Inventory</span> Notifications
+            </h1>
+            <h2 className="dark:text-primary-foreground/30 text-secondary-foreground/50">
+              Never <span className="dark:text-primary-foreground text-secondary-foreground">Miss</span> Low Stock Again
+            </h2>
+          </div>
+
+          {/* Description */}
+          <div className="px-6">
+            <p className="text-muted-foreground text-sm max-w-md">
+              A proof-of-concept inventory management system with real-time Discord notifications for low stock alerts and comprehensive reporting.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="mt-4 flex flex-row gap-4 px-6">
+            <Link href="/products">
+              <Button className="button-highlighted-shadow h-8 px-4 py-2 transition-all-smooth hover:bg-blend-hue hover:cursor-pointer">
+                <span>Get Started</span>
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>   
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section - Compact Bento Grid */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-6 border-b border-dashed">
+        <div className="flex flex-col gap-3 p-4 border border-dashed rounded-lg">
+          <div className="flex items-center gap-2">
+            <Bell className="h-4 w-4 text-primary" />
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Discord Notifications</h2>
+          </div>
+          <p className="jetbrains-mono text-muted-foreground text-xs tracking-tight">
+            Real-time alerts sent directly to your Discord channel when products fall below threshold.
+          </p>
+        </div>
+        
+        <div className="flex flex-col gap-3 p-4 border border-dashed rounded-lg">
+          <div className="flex items-center gap-2">
+            <Database className="h-4 w-4 text-primary" />
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Smart Reporting</h2>
+          </div>
+          <p className="jetbrains-mono text-muted-foreground text-xs tracking-tight">
+            Comprehensive global reports with critical and low stock item summaries.
+          </p>
+        </div>
+        
+        <div className="flex flex-col gap-3 p-4 border border-dashed rounded-lg">
+          <div className="flex items-center gap-2">
+            <Zap className="h-4 w-4 text-primary" />
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Real-time Updates</h2>
+          </div>
+          <p className="jetbrains-mono text-muted-foreground text-xs tracking-tight">
+            Instant stock updates with automatic notification triggers and deduplication.
+          </p>
+        </div>
+        
+        <div className="flex flex-col gap-3 p-4 border border-dashed rounded-lg">
+          <div className="flex items-center gap-2">
+            <Shield className="h-4 w-4 text-primary" />
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Optimized Performance</h2>
+          </div>
+          <p className="jetbrains-mono text-muted-foreground text-xs tracking-tight">
+            Database indexing and connection pooling for efficient inventory management.
+          </p>
+        </div>
+        
+        <div className="flex flex-col gap-3 p-4 border border-dashed rounded-lg">
+          <div className="flex items-center gap-2">
+            <Package className="h-4 w-4 text-primary" />
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Simple Management</h2>
+          </div>
+          <p className="jetbrains-mono text-muted-foreground text-xs tracking-tight">
+            Easy-to-use interface for adding, updating, and monitoring product inventory.
+          </p>
+        </div>
+        
+        <div className="flex flex-col gap-3 p-4 border border-dashed rounded-lg">
+          <div className="flex items-center gap-2">
+            <ArrowRight className="h-4 w-4 text-primary" />
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Ready to Deploy</h2>
+          </div>
+          <p className="jetbrains-mono text-muted-foreground text-xs tracking-tight">
+            Production-ready POC with Neon database, Next.js, and Discord integration.
+          </p>
+        </div>
+      </section>
+
+      {/* Quick Start Section */}
+      <section className="flex flex-col items-center border-b border-dashed py-8 px-6">
+        <div className="flex flex-row items-center gap-2 mb-4">
+          <div className="flex flex-row items-center">
+            <div className="from-muted h-px w-24 bg-gradient-to-l to-transparent sm:w-40"></div>
+            <div className="bg-muted/20 h-1.5 w-1.5 border"></div>
+          </div>
+          <div className="bg-muted/20 jetbrains-mono relative flex h-7 flex-row items-center gap-2 rounded-md border px-4 text-sm font-medium">
+            <span>Quick Start</span>
+          </div>
+          <div className="flex flex-row items-center">
+            <div className="bg-muted/20 h-1.5 w-1.5 border"></div>
+            <div className="from-muted h-px w-24 bg-gradient-to-r to-transparent sm:w-40"></div>
+          </div>
+        </div>
+        
+        <div className="text-center max-w-md">
+          <p className="jetbrains-mono text-muted-foreground text-sm tracking-tight mb-4">
+            Set up your Discord webhook and start managing inventory with smart notifications.
+          </p>
+          <Link href="/products">
+            <Button className="h-8 px-6">
+              <Package className="mr-2 h-4 w-4" />
+              Start Managing
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="flex h-[100px] items-center justify-center overflow-hidden px-4 sm:h-auto sm:px-0">
+        <div className="text-4xl font-bold text-muted-foreground/20 tracking-wider">
+          INVENTORY NOTIFIER
+        </div>
       </footer>
     </div>
   );
