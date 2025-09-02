@@ -10,6 +10,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { NotificationButton } from '@/components/ui/notification-button';
 import { NotificationSettings } from '@/components/ui/notification-settings';
 import { GlobalReportButton } from '@/components/ui/global-report-button';
+import { EmailReportButton } from '@/components/ui/email-report-button';
 import { toast } from 'sonner';
 import { Package, Plus, Trash2, AlertTriangle, CheckCircle, ArrowLeft, TrendingDown, TrendingUp, Bell } from 'lucide-react';
 import Link from 'next/link';
@@ -166,9 +167,10 @@ export default function ProductsClient({ initial }: { initial: Product[] }) {
         </div>
 
         {/* Notification Settings */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <NotificationSettings />
           <GlobalReportButton lowStockItems={lowStockProducts} />
+          <EmailReportButton lowStockItems={lowStockProducts} />
         </div>
 
         {/* Add Product Form */}
